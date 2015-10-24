@@ -1,61 +1,60 @@
 <?php
 interface IStrategy
 {
-	function filter($record);
+	function find($data);
 }
 
-class FindAfterStrategy implements IStrategy
+class OddStrategy implements IStrategy
 {
-	private $_name;
-
-	public function __construct($name){
-		$this->_name = $name;
-	}
-
-	public function filter($record){
-		//
-		return strcmp($this->_name, $record) <= 0;
+	public function find($data)
+	{
+		return array(1, 3, 5);
 	}
 }
 
-class RandomStrategy implements IStrategy
+class EvenStrategy implements IStrategy
 {
-	public function filter($record){
-		return rand(0, 1) >= 0.5;
+	public function find($data)
+	{
+		return array(2, 4, 6);
 	}
 }
 
-class UserList
+class Big2Strategy implements IStrategy
 {
-	private $_list = array();
-
-	public function __construct($names){
-		if ($names != null){
-			foreach($names as $name){
-				$this->_list[] = $name;
-			}
-		}
-	}
-
-	public function add($name){
-		$this->_list[] = $name;
-	}
-
-	public function find($filter){
-		$recs = array();
-		foreach ($this->_list as $user){
-			if ($filter->filter($user)){
-				$recs[] = $user;
-			}
-		}
-
-		return $recs;
+	public function find($data){
+		return array(3, 4, 5);
 	}
 }
 
-$ul = new Userlist(array('Andy', 'Jack', 'Lori', 'Megan'));
-$f1 = $ul->find(new RandomStrategy());
-print_r($f1);
+class A
+{
+	public function find(IStrategy $a) {
+		$this->_result = $a->find($this->_a);
+	}
 
-$f2 = $ul->find(new FindAfterStrategy('J'));
-print_r($f2);
+	public function result()
+	{
+		return $this->_result;
+	}
+
+	private $_result;
+	private $_a = array(1, 2, 3, 4, 5, 6);
+}
+
+//策略
+$odd = new OddStrategy;
+$even = new EvenStrategy;
+$big2 = new Big2Strategy;
+
+$a = new A;
+
+$a->find($odd);
+$result1 = $a->result();
+$a->find($even);
+$result2 = $a->result();
+$a->find($big2);
+$result3 = $a->result();
+
+var_dump($result1, $result2, $result3);
+
