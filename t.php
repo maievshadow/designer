@@ -1,32 +1,59 @@
 <?php
-class B 
+interface IOperation
 {
-	public function show()
-	{
-		echo "do something\n";
-	}
+	public function compute($a, $b);
+}
 
-	protected function doparent()
-	{
-		echo "do something\n";
+class Add implements IOperation
+{
+	public function compute($a, $b) {
+		return ($a + $b);
 	}
 }
 
-class C extends B
+class Sub implements IOperation
 {
-	public function show()
-	{
-		parent::show();
-		echo "do other things..\n";
-	}
-
-	public function do_other()
-	{
-		$this->doparent();
-		echo "do other things..\n";
+	public function compute($a, $b) {
+		return $a > $b ? $a - $b : $b - $a;
 	}
 }
 
-$c = new C;
-$c->do_other();
+class Expression
+{
+	public function __construct($operation, $a, $b){
+		switch($operation){
+			case '+':
+				$this->_operation = new Add;
+				break;
+			case '-':
+				$this->_operation = new Sub;
+				break;
+			default:
+				break;
+		}
 
+		$this->_operand = array($a, $b);
+	}
+
+	public function compute() {
+		$this->_result = $this->_operation->compute($this->_operand[0], $this->_operand[1]);
+	}
+
+	public function result() {
+		return $this->_result;
+	}
+
+	private $_operation;
+	private $_result;
+	private $_operand = null;
+}
+
+$expression = new Expression('+', 1, 2);
+$expression->compute();
+$result = $expression->result();
+var_dump($result);
+
+$expression = new Expression('-', 1, 2);
+$expression->compute();
+$result = $expression->result();
+var_dump($result);
