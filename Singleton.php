@@ -1,23 +1,32 @@
 <?php
-class DatabaseConnection
+class A
 {
-	public static function get(){
-		static $db = null;
-		if ($db == null)
-			$db = new DatabaseConnection();
-		return $db;
+	private function __construct()
+	{
+		self::$_db = 1;
 	}
 
-	private $_handle = null;
+	static private $_db;
+	static private $_instance = null;
 
-	private function __construct(){
-		$dsn = '';
-		$this->_handle = DB::Connect($dsn, array());
+	static public function run()
+	{
+		if (is_null(self::$_instance)){
+			self::$_instance = new self;
+		}
+
+		return self::$_instance;
 	}
 
-	public function handle(){
-		return $this->_handle;
+	static function db()
+	{
+		return self::$_db;
 	}
 }
 
-print DatabaseConnection::get()->handle();
+$a1 = A::run();
+$a2 = A::run();
+var_dump($a1 == $a2);
+var_dump($a1 === $a2);
+var_dump($a1, $a2);
+var_dump($a1->db());
