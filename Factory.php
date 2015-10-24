@@ -1,4 +1,5 @@
 <?php
+//简单工厂 static 方式
 class Apple
 {
 	public function __construct()
