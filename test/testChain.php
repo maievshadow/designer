@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__."/./../bootstrat.php");
+require_once(__DIR__ . "/./../bootstrat.php");
 class Chain2Test extends PHPUnit_Framework_TestCase
 {
     public function setUp(){ }
