@@ -1,4 +1,10 @@
 <?php
+
+
+
+
+
+
 class Request{
 
     private $_data ;
@@ -10,6 +16,7 @@ class Request{
         $this->_successor = $successor;
     }
 }
+
 
 class Handler{
 
@@ -65,8 +72,3 @@ class Handler2 extends Handler{
     }
 }
 
-$request = new Request(null,0);
-$h = new Handler();
-$h1 = new Handler1($h, 1);
-$h2 = new Handler2($h1,0);
-$h2->hander($request); //h1 ??
