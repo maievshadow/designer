@@ -38,8 +38,4 @@ class MailCommand implements ICommand
 	}
 }
 
-$cc = new CommandChain();
-$cc->addCommand(new UserCommand());
-$cc->addCommand(new MailCommand());
-$cc->runCommand('addUser', null);
-$cc->runCommand('mail', null);
+
