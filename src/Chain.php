@@ -14,27 +14,26 @@ class CommandChain
 
 	public function runCommand($name, $args){
 		foreach($this->_commands as $cmd) {
-			if ($cmd->onCommand($name, $args))
-				return;
+			$cmd->onCommand($name, $args);
 		}
+
+		return $name;
 	}
 }
 
 class UserCommand implements ICommand
 {
 	public function onCommand($name, $args){
-		if ($name != 'addUser') return false;
-		echo "UserCommand handling 'addUser'\n";
-		return true;
+		if ($name != 'addUser') return null;
+		return "addUser";
 	}
 }
 
 class MailCommand implements ICommand
 {
 	public function onCommand($name, $args){
-		if ($name != 'mail') return false;
-		echo "MailCommand handling 'mail'\n";
-		return true;
+		if ($name != 'mail') return null;
+		return "mail";
 	}
 }
 

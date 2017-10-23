@@ -1,5 +1,4 @@
 <?php
-require_once(__DIR__ . "/./../bootstrat.php");
 class ChainTest extends PHPUnit_Framework_TestCase
 {
     public function setUp(){ }
@@ -8,8 +7,9 @@ class ChainTest extends PHPUnit_Framework_TestCase
         $cc = new CommandChain();
         $cc->addCommand(new UserCommand());
         $cc->addCommand(new MailCommand());
-        $cc->runCommand('addUser', null);
-        $cc->runCommand('mail', null);
+
+        $this->assertEquals("addUser", $cc->runCommand("addUser", null));
+        $this->assertEquals("mail", $cc->runCommand("mail", null));
     }
 }
 

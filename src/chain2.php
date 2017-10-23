@@ -1,10 +1,4 @@
 <?php
-
-
-
-
-
-
 class Request{
 
     private $_data ;
@@ -17,7 +11,6 @@ class Request{
     }
 }
 
-
 class Handler{
 
     protected $_handler; //parent handler
@@ -28,7 +21,7 @@ class Handler{
         if ($this->_successor == 0){
             $this->_hander->hander($r);
         }else{
-            printf("end haner\r\n");
+            return "end";
         }
     }
 
@@ -50,9 +43,9 @@ class Handler1 extends Handler{
 
     public function hander(Request $r){
         if ($this->hasHander()){
-            printf("handler1 \r\n");
+            return "handler1";
         }else{
-            $this->_handler->hander($r);
+            return $this->_handler->hander($r);
         }
     }
 }
@@ -65,9 +58,9 @@ class Handler2 extends Handler{
 
     public function hander(Request $r){
         if ($this->hasHander()){
-            printf("handler2 \r\n");
+            return "handler2";
         }else{
-            $this->_handler->hander($r);
+            return $this->_handler->hander($r);
         }
     }
 }
