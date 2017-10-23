@@ -1,10 +1,8 @@
 <phpunit bootstrap="src/bootstrat.php">
     <testsuites>
         <testsuite name="My Test Suite">
-            <directory>test</directory>
-            <file>test/testChain.php</file>
+            <directory suffix="Test.php">test</directory>
             <exclude>/path/to/exclude</exclude>
         </testsuite>
     </testsuites>
-
 </phpunit>
