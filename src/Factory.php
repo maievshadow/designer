@@ -1,4 +1,5 @@
 <?php
+namespace Command\Factory;
 //简单工厂 static 方式
 class Apple
 {
@@ -54,5 +55,7 @@ class Factory
 	}
 }
 
+/*
 $fruit_factory = Factory::create();
 $fruit_factory->eat_all();
+*/

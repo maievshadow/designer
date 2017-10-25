@@ -1,4 +1,5 @@
 <?php
+namespace Command\Strategy;
 interface IStrategy
 {
 	function find($data);
@@ -42,7 +43,7 @@ class A
 	private $_a = array(1, 2, 3, 4, 5, 6);
 }
 
-//策略
+/*
 $odd = new OddStrategy;
 $even = new EvenStrategy;
 $big2 = new Big2Strategy;
@@ -57,4 +58,5 @@ $a->find($big2);
 $result3 = $a->result();
 
 var_dump($result1, $result2, $result3);
+*/
 

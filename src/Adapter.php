@@ -1,4 +1,5 @@
 <?php
+namespace Command\Adapter;
 interface ITarget
 {
     function service();
@@ -42,28 +43,4 @@ class Adpater  extends Target
     }
 }
 
-class client
-{
-    public static function run()
-    {
-        //formate
-        $target = new Target();
-        echo $target->service();
 
-        nr();
-        //apateee
-        $adapter = new Adpater();
-        $adapter->setAdaptee(new Adaptee());
-        echo $adapter->service();
-        nr();
-        echo $adapter->addService();
-        nr();
-    }
-}
-
-function nr()
-{
-    echo  "\n\r";
-}
-
-client::run();

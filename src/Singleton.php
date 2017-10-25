@@ -1,4 +1,5 @@
 <?php
+namespace Command\Singleton;
 class A
 {
 	private function __construct()
@@ -24,9 +25,11 @@ class A
 	}
 }
 
+/*
 $a1 = A::run();
 $a2 = A::run();
 var_dump($a1 == $a2);
 var_dump($a1 === $a2);
 var_dump($a1, $a2);
 var_dump($a1->db());
+*/

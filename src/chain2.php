@@ -1,4 +1,5 @@
 <?php
+namespace Command\Chain;
 class Request{
 
     private $_data ;

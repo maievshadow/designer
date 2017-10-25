@@ -1,4 +1,5 @@
 <?php
+namespace Command\Proxy;
 interface Aproxy
 {
 	function get_response();
@@ -77,6 +78,8 @@ class Client
 	private $_proxy;
 }
 
+/*
 $client = new Client(new Request_proxy);
 $client->do_request();
 $client->get_response();
+*/

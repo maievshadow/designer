@@ -1,4 +1,5 @@
 <?php
+namespace Command\Chain;
 interface ICommand
 {
 	function onCommand($name, $args);

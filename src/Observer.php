@@ -1,4 +1,5 @@
 <?php
+namespace Command\Observer;
 //观察者 
 interface IObserver
 {
@@ -33,6 +34,8 @@ class UserListLogger implements IObserver
 	}
 }
 
+/*
 $ul = new UserList();
 $ul->addObserver(new UserListLogger());
 $ul->addCustomer("Jack");
+*/
